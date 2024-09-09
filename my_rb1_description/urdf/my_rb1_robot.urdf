@@ -1,5 +1,33 @@
 <?xml version="1.0" ?>
+
 <robot name="rb1_robot_kailash">
+
+    <gazebo reference="base_link">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="left_wheel">
+        <material>Gazebo/White</material>
+        <mu1>0.8</mu1>
+        <mu2>0.8</mu2>
+    </gazebo>
+    <gazebo reference="right_wheel">
+        <material>Gazebo/White</material>
+        <mu1>0.8</mu1>
+        <mu2>0.8</mu2>
+    </gazebo>
+    <gazebo reference="front_caster">
+        <material>Gazebo/ZincYellow</material>
+        <mu1>0.0</mu1>
+        <mu2>0.0</mu2>
+    </gazebo>
+    <gazebo reference="back_caster">
+        <material>Gazebo/ZincYellow</material>
+        <mu1>0.0</mu1>
+        <mu2>0.0</mu2>
+    </gazebo>
+    <gazebo reference="front_laser">
+        <material>Gazebo/Grass</material>
+    </gazebo>
     
     <link name="base_footprint"/>
 
