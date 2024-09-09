@@ -20,7 +20,7 @@
     <arg name="x" default="-0.35"/>
     <arg name="y" default="-1.35"/>
     <arg name="z" default="0.5"/>
-    <arg name="model_name" default="kailash\'s_model"/>
+    <arg name="model_name" default="rb1_robot_kailash"/>
 
     <!-- Spawn the URDF model into Gazebo -->
     <node name="mybot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
