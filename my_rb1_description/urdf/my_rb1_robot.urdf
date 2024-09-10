@@ -6,13 +6,13 @@
     </gazebo>
     <gazebo reference="left_wheel">
         <material>Gazebo/White</material>
-        <mu1>0.8</mu1>
-        <mu2>0.8</mu2>
+        <mu1>10</mu1>
+        <mu2>10</mu2>
     </gazebo>
     <gazebo reference="right_wheel">
         <material>Gazebo/White</material>
-        <mu1>0.8</mu1>
-        <mu2>0.8</mu2>
+        <mu1>10</mu1>
+        <mu2>10</mu2>
     </gazebo>
     <gazebo reference="front_caster">
         <material>Gazebo/ZincYellow</material>
@@ -28,17 +28,25 @@
     <!-- Differential Drive Controller Plugin -->
     <gazebo>
         <plugin filename="libgazebo_ros_diff_drive.so" name="differential_drive_controller">
+            <rosDebugLevel>na</rosDebugLevel>
             <alwaysOn>true</alwaysOn>
             <updateRate>20</updateRate>
             <leftJoint>joint_base_left_wheel</leftJoint>
             <rightJoint>joint_base_right_wheel</rightJoint>
             <wheelSeparation>0.4</wheelSeparation>
             <wheelDiameter>0.05</wheelDiameter>
-            <torque>10</torque>
+            <wheelTorque>10</wheelTorque>
             <commandTopic>cmd_vel</commandTopic>
             <odometryTopic>odom</odometryTopic>
             <odometryFrame>odom</odometryFrame>
             <robotBaseFrame>base_link</robotBaseFrame>
+            <publishWheelTF>false</publishWheelTF>
+            <publishOdomTF>true</publishOdomTF>
+            <robotBaseFrame>base_link</robotBaseFrame>
+            <publishWheelJointState>true</publishWheelJointState>
+            <wheelAcceleration>false</wheelAcceleration>
+            <odometrySource>world</odometrySource>
+            <publishTf>true</publishTf>
         </plugin>
     </gazebo>
 
@@ -116,7 +124,6 @@
         <child link="left_wheel" />
         <parent link="base_link" />
         <axis rpy="0 0 0" xyz="0 1 0" />
-        <limit effort="10000" velocity="1000" />
         <joint_properties damping="0.05" friction="0.1" />
     </joint>
     <!-- Link - left wheel -->
@@ -149,7 +156,6 @@
         <child link="right_wheel" />
         <parent link="base_link" />
         <axis rpy="0 0 0" xyz="0 1 0" />
-        <limit effort="10000" velocity="1000" />
         <joint_properties damping="0.05" friction="0.1" />
     </joint>
     <!-- Link - right wheel -->
