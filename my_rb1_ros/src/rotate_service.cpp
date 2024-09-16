@@ -65,16 +65,11 @@ private:
       ROS_DEBUG("Current: %f, Target: %f", current_yaw_, stop_yaw);
 
       // Adjust angular speed based on the error
-      if (error > 0.5) {
-        command.angular.z = 0.3 * direction;
-      } else if (error > 0.4) {
-        command.angular.z = 0.2 * direction;
-      } else if (error > 0.3) {
-        command.angular.z = 0.1 * direction;
+      if (error < 0.5) {
+        command.angular.z = error * direction;
       } else {
-        command.angular.z = 0.05 * direction;
+        command.angular.z = 0.65 * direction;
       }
-
       cmd_vel_pub_.publish(command);
 
       ros::spinOnce(); // Ensure callbacks are processed
@@ -88,7 +83,8 @@ private:
     command.angular.z = 0.0;
     cmd_vel_pub_.publish(command);
     ROS_INFO("Service Completed.");
-    res.result = "success";
+    res.result = "Service completed successfully for " +
+                 std::to_string(req.degrees) + " degrees";
     return true;
   }
 
